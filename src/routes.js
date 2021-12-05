@@ -119,4 +119,11 @@ router.post('/withdraw', accountExists, (req, res) => {
     return res.status(201).json(withdraw);
 });
 
+router.get('/balance', accountExists, (req, res) => {
+    const { customer } = req;
+    const balance = getBalance(customer.transactions)
+
+    return res.json(balance)
+})
+
 module.exports = router
